@@ -1,13 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
-class indexController extends BaseController
+use Illuminate\Http\Request;
+use App\Http\Models\Home\Products;
+use App\Http\Controllers\Controller;
+class IndexController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    /**
+     * 为指定用户显示详情
+     *
+     * @param int $id
+     * @return Response
+     * @author shehuizhen
+     */
+    public function index()
+    {  
+        $title = Products::title();
+        $con = [];
+        foreach ($title as $key => $value) {
+            $con[] = $value->classification;
+        }
+        return view('Home.index');
+    }
+    public function show(){
+        return 1111;
+    }
 }

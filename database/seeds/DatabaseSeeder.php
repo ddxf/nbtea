@@ -11,6 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('Product')->insert([
+            'classification_id' => rand(1,15),
+            'Introduction' => str_random(10),
+            'price' => rand(1000,15000),
+            'orprice' => rand(1000,15000),
+            'instock' => rand(1000,15000),
+            'sold' => rand(1000,15000),
+            'image' => rand(1000,15000),
+            'Integral' => rand(1000,15000),
+        ]);
     }
 }
